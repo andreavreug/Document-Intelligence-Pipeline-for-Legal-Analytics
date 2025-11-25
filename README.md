@@ -2,7 +2,7 @@
 
 A comprehensive solution for extracting structured information from legal and financial documents (contracts, emails, and invoices) using OCR and large language models. This pipeline automates document classification and data extraction for legal analytics workflows.
 
-## 📋 Overview
+## Overview
 
 This project processes PDF documents through a two-stage pipeline:
 
@@ -15,7 +15,7 @@ The system is designed to handle:
 - **Invoices**: Billing documents with line items, totals, and payment information
 - **Other**: Unclassified or unreadable documents
 
-## 🚀 Features
+## Features
 
 - **Multi-document Processing**: Handles PDFs with multiple pages, processing each page independently
 - **Intelligent Document Classification**: Automatically identifies document types based on structural patterns
@@ -27,7 +27,7 @@ The system is designed to handle:
 - **Error Handling**: Gracefully manages OCR failures and parsing errors
 - **Pandas Integration**: Outputs results as DataFrames for easy analysis and export
 
-## 📦 Prerequisites
+## Prerequisites
 
 ### Python Packages
 
@@ -53,7 +53,7 @@ pip install PyMuPDF pytesseract pdfplumber pillow azure-storage-blob
 - **Databricks Account**: Required for accessing Databricks Foundation Models API
 - **Model**: Llama 3.3 70B Instruct endpoint configured in Databricks workspace
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Document-Intelligence-Pipeline-for-Legal-Analytics/
@@ -98,7 +98,7 @@ Results are combined across all pages into three DataFrames:
 - **Line Items**: All extracted line items with page and merchant references
 - **Payments**: All payment records with transaction details
 
-## 💻 Usage
+## Usage
 
 ### Basic Usage
 
@@ -169,7 +169,7 @@ The pipeline produces three main outputs:
 | payment_date | str | Transaction date |
 | payment_amount | float | Amount paid |
 
-## ⚠️ Important Notes
+## Important Notes
 
 ### LLM Prompt Strategy
 The prompt template uses zero-temperature (temperature: 0) for consistent, deterministic results. This is critical for:
@@ -190,21 +190,21 @@ The prompt template uses zero-temperature (temperature: 0) for consistent, deter
 - Requires Tesseract OCR system installation
 - Databricks API calls incur costs based on token usage
 
-## 🔐 Security Considerations
+## Security Considerations
 
 - **API Keys**: Store Databricks credentials in environment variables, not in notebook
 - **Azure Credentials**: Use managed identities or secure credential stores
 - **Data**: Be aware that document content is sent to external LLM API
 - **Compliance**: Ensure GDPR/HIPAA compliance if handling sensitive documents
 
-## 📈 Performance Tips
+## Performance Tips
 
 1. **Batch Processing**: Process multiple PDFs sequentially to manage API rate limits
 2. **DPI Adjustment**: Use 200-300 DPI for best balance between quality and speed
 3. **Page Limits**: Consider processing large PDFs in sections
 4. **Token Monitoring**: Monitor Databricks API token usage for cost optimization
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -214,7 +214,7 @@ The prompt template uses zero-temperature (temperature: 0) for consistent, deter
 | OCR quality poor | Increase DPI or check PDF image resolution |
 | Databricks API errors | Verify model endpoint exists and credentials are valid |
 
-## 📝 Example Workflow
+## Example Workflow
 
 1. Place PDF file in local directory or Azure Blob Storage
 2. Run OCR extraction to convert PDF to text
@@ -226,13 +226,6 @@ The prompt template uses zero-temperature (temperature: 0) for consistent, deter
    df_all_payments.to_csv("payments.csv", index=False)
    ```
 
-## 🤝 Contributing
-
-This is a BUSA Compass project at McGill University. For questions or improvements, please contact the project maintainers.
-
-## 📄 License
-
-[Add appropriate license here]
 
 ## 🔗 Related Resources
 
